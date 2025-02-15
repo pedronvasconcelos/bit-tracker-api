@@ -1,9 +1,6 @@
 package tech.vasconcelos.trackercoin.infra.data.models
 
-import jakarta.persistence.Column
-import jakarta.persistence.Entity
-import jakarta.persistence.Id
-import jakarta.persistence.Table
+import jakarta.persistence.*
 import tech.vasconcelos.trackercoin.domain.entities.User
 import tech.vasconcelos.trackercoin.domain.valueobjects.Email
 import java.time.LocalDateTime
@@ -15,7 +12,7 @@ import java.util.UUID
 data class UserEntity(
     @Id
     @Column(name = "id", nullable = false)
-    val id: UUID = UUID.randomUUID(),
+    val id: UUID,
 
     @Column(name = "name", nullable = false)
     val name: String,
@@ -27,7 +24,15 @@ data class UserEntity(
     val createdDate: LocalDateTime,
 
     @Column(name = "updated_date", nullable = false)
-    val updatedDate: LocalDateTime
+    val updatedDate: LocalDateTime,
+    @Column(
+        name = "internal_id",
+        nullable = false,
+        updatable = false,
+        columnDefinition = "bigserial"
+    )
+    val internalId: Long = 0,
+
 ) {
      fun toDomain(): User =
         User(id, name, Email.create(email), createdDate, updatedDate)

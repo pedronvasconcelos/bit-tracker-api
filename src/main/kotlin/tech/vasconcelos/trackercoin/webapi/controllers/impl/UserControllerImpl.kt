@@ -15,9 +15,8 @@ class UserControllerImpl @Autowired constructor(
     private val createUserUseCase: CreateUserUseCase
 ) : UserController {
 
-    override fun createUser(@RequestBody request: CreateUserRequest): ResponseEntity<BaseResponse<CreateUserResponse>> {
-         val user = createUserUseCase.execute(request)
-       return  ResponseEntity(BaseResponse.success(user, "User created successfully"), HttpStatus.CREATED)
-    }
+
+    override fun createUser(@RequestBody request: CreateUserRequest): ResponseEntity<BaseResponse<CreateUserResponse>> =
+        ResponseEntity(BaseResponse.success(createUserUseCase.execute(request), "User created successfully"), HttpStatus.CREATED)
 
 }
