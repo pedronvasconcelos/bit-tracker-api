@@ -4,7 +4,7 @@ import tech.vasconcelos.trackercoin.domain.valueobjects.Email
 import java.time.LocalDateTime
 import java.util.UUID
 
-data class User private constructor(
+data class User  constructor(
     val id: UUID,
     val name: String,
     val email: Email,

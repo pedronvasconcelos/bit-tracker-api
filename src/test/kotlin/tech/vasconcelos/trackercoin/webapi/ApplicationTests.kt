@@ -1,4 +1,4 @@
-package tech.vasconcelos.trackercoin.api
+package tech.vasconcelos.trackercoin.webapi
 
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest
